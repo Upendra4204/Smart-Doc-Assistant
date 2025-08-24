@@ -67,8 +67,12 @@ Ask a question related to the uploaded document.
 
 ## 📸 Screenshots
 
-<img width="2159" height="1188" alt="Screenshot 2025-08-24 130805 - Copy" src="https://github.com/user-attachments/assets/ce8ddb43-0cad-4a9a-ac97-c38cb10c8986" />
-<img width="2157" height="1183" alt="Screenshot 2025-08-24 130743 - Copy" src="https://github.com/user-attachments/assets/3f495d08-aa37-4d1e-a10a-ca9a2294eae4" />
+### 🏠 Home Interface
+![Home Interface](https://github.com/Upendra4204/Smart-Doc-Assistant/raw/main/Screenshot%202025-08-24%20130743.png)
+
+### 💬 Chat Example
+![Chat Example](https://github.com/Upendra4204/Smart-Doc-Assistant/raw/main/Screenshot%202025-08-24%20130805.png)
+
 
 
 
