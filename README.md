@@ -63,8 +63,12 @@ Upload a document (PDF/TXT/CSV/DOCX/XLSX).
 
 Ask a question related to the uploaded document.
 
-<img width="2159" height="1188" alt="Screenshot 2025-08-24 130805" src="https://github.com/user-attachments/assets/ec326b66-c4de-4003-b9c8-e505cee0cad6" />
-<img width="2157" height="1183" alt="Screenshot 2025-08-24 130743" src="https://github.com/user-attachments/assets/b9fce336-217b-4748-a26e-023684da95f7" />
+---
+
+## 📸 Screenshots
+
+<img width="2159" height="1188" alt="Screenshot 2025-08-24 130805 - Copy" src="https://github.com/user-attachments/assets/ce8ddb43-0cad-4a9a-ac97-c38cb10c8986" />
+<img width="2157" height="1183" alt="Screenshot 2025-08-24 130743 - Copy" src="https://github.com/user-attachments/assets/3f495d08-aa37-4d1e-a10a-ca9a2294eae4" />
 
 
 
