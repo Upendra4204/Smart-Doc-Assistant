@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+jinja2
+python-multipart
+pydantic
+python-dotenv
+pandas
+shutilwhich
+groq
+langchain
+langchain-community
+faiss-cpu
+sentence-transformers
+docx2txt
+PyPDF2

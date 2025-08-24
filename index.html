@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Chatbot UI</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 700px;
+            margin: 60px auto;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0055aa;
+        }
+        .response {
+            margin-top: 30px;
+            background: #f9f9f9;
+            padding: 20px;
+            border-left: 4px solid #007acc;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 RAG Chatbot</h1>
+        <form id="chat-form">
+            <input type="text" id="question" placeholder="Ask a question..." required>
+            <button type="submit">Ask</button>
+        </form>
+        <div class="response" id="response-box"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById('chat-form');
+        const questionInput = document.getElementById('question');
+        const responseBox = document.getElementById('response-box');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const question = questionInput.value;
+            responseBox.innerHTML = "⏳ Thinking...";
+
+            try {
+                const res = await fetch('/ask', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question })
+                });
+                const data = await res.json();
+                responseBox.innerHTML = `<strong>Answer:</strong><br>${data.answer}`;
+            } catch (err) {
+                responseBox.innerHTML = '⚠️ Error contacting the backend';
+            }
+        });
+    </script>
+</body>
+</html>

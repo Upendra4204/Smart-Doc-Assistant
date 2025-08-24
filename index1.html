@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>🧠 RAG Chatbot</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 700px; margin: 40px auto; padding: 20px; }
+    h1 { color: #333; }
+    input[type="text"] { width: 90%; padding: 10px; font-size: 16px; }
+    button { padding: 10px 20px; font-size: 16px; }
+    .chat-box { margin-top: 30px; border: 1px solid #ccc; padding: 20px; background: #f9f9f9; }
+    .response { margin-top: 20px; padding: 10px; background: #e6ffe6; border: 1px solid #8bc34a; }
+  </style>
+</head>
+<body>
+  <h1>🧠 RAG Chatbot</h1>
+
+  <form id="chat-form">
+    <input type="text" id="question" placeholder="Ask me anything..." required />
+    <button type="submit">Ask</button>
+  </form>
+  <div class="response" id="answer-box"></div>
+
+  <hr>
+
+  <h2>📁 Upload Your Document</h2>
+  <form id="upload-form">
+    <input type="file" id="file" required />
+    <button type="submit">Upload & Process</button>
+  </form>
+  <div class="response" id="upload-response"></div>
+
+  <script>
+    const chatForm = document.getElementById("chat-form");
+    const answerBox = document.getElementById("answer-box");
+    const uploadForm = document.getElementById("upload-form");
+    const uploadResponse = document.getElementById("upload-response");
+
+    chatForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const question = document.getElementById("question").value;
+      answerBox.innerHTML = "⏳ Thinking...";
+
+      const res = await fetch("/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question })
+      });
+      const data = await res.json();
+      answerBox.innerHTML = `<strong>Q:</strong> ${data.question}<br/><strong>A:</strong> ${data.answer}`;
+    });
+
+    uploadForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const file = document.getElementById("file").files[0];
+      if (!file) return;
+
+      uploadResponse.innerHTML = "⏳ Processing...";
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const res = await fetch("/upload", {
+        method: "POST",
+        body: formData
+      });
+      const data = await res.json();
+      uploadResponse.innerHTML = data.status;
+    });
+  </script>
+</body>
+</html>
